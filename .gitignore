@@ -1,0 +1,13 @@
+# Các thư mục/file của Godot Engine
+.godot/
+.import/
+export_presets.cfg
+
+# Các file tạm của hệ điều hành
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Các file dự phòng (Backup)
+*.bak
+*.tmp
