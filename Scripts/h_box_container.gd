@@ -1,28 +1,50 @@
 extends HBoxContainer
-
-
+signal selected (path: String)
+var list: Array[String]
+var num: int = 0
+var can_atk: bool = true
 func _ready():
-	# Duyệt qua tất cả các node con nằm trong HBoxContainer
 	for child in get_children():
-		# Kiểm tra nếu node con là một TextureButton
 		if child is TextureButton:
 			var random_number = randi_range(1,3)
-			var path = load("res://assets/%d.png" % random_number)
-			child.texture_normal = path
-			# Kết nối signal 'pressed' của node con tới một hàm ở node cha
-			# .bind(child) giúp chúng ta biết được chính xác nút nào vừa được nhấn
+			if (child.name != "TextureButton4"):
+				var path = load("res://Assets/%d.png" % random_number)
+				child.texture_normal = path
+			else:
+				var path = load("res://Assets/0.png")
+				child.texture_normal = path
 			child.pressed.connect(_on_any_button_pressed.bind(child))
-
+	
 func _on_any_button_pressed(button_node: TextureButton):
-	for child in get_children():
-		var random_number = randi_range(1,3)
-		var path = load("res://assets/0.png")
-		child.texture_normal = path
-	await get_tree().create_timer(0.5).timeout
-	# Logic quản lý tập trung:
-	# Ví dụ: làm tất cả các nút mờ đi, chỉ nút được chọn là sáng lên
-	for child in get_children():
-		var random_number = randi_range(1,3)
-		var path = load("res://assets/%d.png" % random_number)
-		child.texture_normal = path
+	var but = button_node.texture_normal
+	if (button_node.name != "TextureButton4" ):
+		if ($"../Player_Bot/Player/VBoxContainer".check_mana(1)) :
+			num += 1
+			var path = load("res://Assets/0.png")
+			button_node.texture_normal = path
+			if (but.resource_path == "res://Assets/3.png"):
+				can_atk = false
+			selected.emit(but.resource_path)
+			$"../Player_Bot/Player/VBoxContainer".mana = $"../Player_Bot/Player/VBoxContainer".mana - 1
+			$"../Player_Bot/Player/VBoxContainer".update_text_based_on_action_2(str($"../Player_Bot/Player/VBoxContainer".mana))
+		else:
+			$"../Label".text = "Không đủ mana"
+			await get_tree().create_timer(2.0).timeout
+			$"../Label".text = ""
+			
+	else :
+		$"../Player_Bot/Bot/Label".attack()
+		can_atk = true
+		$"../Player_Bot/Player/VBoxContainer".mana = $"../Player_Bot/Player/VBoxContainer".mana + 1
+		$"../Player_Bot/Player/VBoxContainer".update_text_based_on_action_2(str($"../Player_Bot/Player/VBoxContainer".mana))
+		num = 0
+		for child in get_children():
+			var random_number = randi_range(1,3)
+			if (child.name != "TextureButton4"):
+				var path = load("res://Assets/%d.png" % random_number)
+				child.texture_normal = path
+			else:
+				var path = load("res://Assets/0.png")
+				child.texture_normal = path
+		
 		
