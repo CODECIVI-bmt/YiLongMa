@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bkxu0r6t6ffwa"]
+
+[ext_resource type="Texture2D" uid="uid://ddata35n4x8fq" path="res://Assets/Game_over.png" id="1_thwhc"]
+[ext_resource type="Script" uid="uid://btvfv0qklftka" path="res://Scripts/button.gd" id="2_1d8ia"]
+[ext_resource type="Script" uid="uid://dwpdggpkgdhg5" path="res://Scripts/button_4.gd" id="3_1d8ia"]
+
+[node name="Node2D" type="Node2D" unique_id=818729269]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2082178898]
+position = Vector2(583, 329)
+scale = Vector2(1.850629, 1.8416667)
+texture = ExtResource("1_thwhc")
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="." unique_id=1302544754]
+offset_left = 517.0
+offset_top = 429.0
+offset_right = 673.0
+offset_bottom = 522.0
+theme_override_colors/font_color = Color(0.9360815, 0.8477832, 0.88201, 1)
+theme_override_colors/font_outline_color = Color(0.851769, 0.8517689, 0.85176885, 1)
+theme_override_font_sizes/font_size = 32
+text = "Chơi lại"
+script = ExtResource("2_1d8ia")
+
+[node name="Button2" type="Button" parent="." unique_id=328138936]
+offset_left = 449.0
+offset_top = 536.0
+offset_right = 745.0
+offset_bottom = 625.0
+theme_override_font_sizes/font_size = 32
+text = "Về màn hình chính"
+script = ExtResource("3_1d8ia")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]

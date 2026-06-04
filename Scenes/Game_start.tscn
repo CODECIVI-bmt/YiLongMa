@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://ovsbi2juvba4"]
+
+[ext_resource type="Texture2D" uid="uid://hfqvlmy3jyy7" path="res://Assets/Main_menu.png" id="1_jov2w"]
+[ext_resource type="Script" uid="uid://ygaevwikgsfo" path="res://Scripts/button_2.gd" id="2_jov2w"]
+[ext_resource type="Script" uid="uid://cm7dl0hi8yfud" path="res://Scripts/button_3.gd" id="3_jov2w"]
+
+[node name="Node2D" type="Node2D" unique_id=1250938345]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=464257111]
+position = Vector2(582.00006, 333.99994)
+scale = Vector2(0.70150155, 0.70127124)
+texture = ExtResource("1_jov2w")
+
+[node name="Button" type="Button" parent="Sprite2D" unique_id=617975229]
+offset_left = -181.66444
+offset_top = 19.028809
+offset_right = 244.53758
+offset_bottom = 101.79492
+theme_override_font_sizes/font_size = 32
+text = "Start"
+script = ExtResource("2_jov2w")
+
+[node name="Button2" type="Button" parent="Sprite2D" unique_id=193161181]
+offset_left = -181.66446
+offset_top = 130.61526
+offset_right = 247.87595
+offset_bottom = 210.42542
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+script = ExtResource("3_jov2w")
+
+[connection signal="pressed" from="Sprite2D/Button" to="Sprite2D/Button" method="_on_pressed"]
+[connection signal="pressed" from="Sprite2D/Button2" to="Sprite2D/Button2" method="_on_pressed"]

@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cq1m3sbbi5t16"]
+
+[ext_resource type="Texture2D" uid="uid://dfa3hqnsjout" path="res://Assets/Untitled.png" id="1_wtcfe"]
+[ext_resource type="Script" uid="uid://c5gtu446olmhp" path="res://Scripts/h_box_container.gd" id="2_v1qfn"]
+[ext_resource type="PackedScene" uid="uid://w8yvyuw6gonv" path="res://Scenes/Player_and_Bot.tscn" id="4_fuudy"]
+[ext_resource type="PackedScene" uid="uid://bkxu0r6t6ffwa" path="res://Scenes/Game_over.tscn" id="4_xylue"]
+
+[node name="Level" type="Node2D" unique_id=2076208235]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=359538180]
+position = Vector2(633.00006, 327.00003)
+scale = Vector2(0.9068259, 1.3669723)
+texture = ExtResource("1_wtcfe")
+metadata/_edit_lock_ = true
+
+[node name="Khung_bai" type="HBoxContainer" parent="." unique_id=138260734]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 357.0
+offset_top = 503.0
+offset_right = 839.0
+offset_bottom = 649.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 9
+alignment = 1
+script = ExtResource("2_v1qfn")
+
+[node name="TextureButton" type="TextureButton" parent="Khung_bai" unique_id=439586217]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureButton2" type="TextureButton" parent="Khung_bai" unique_id=824215340]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureButton3" type="TextureButton" parent="Khung_bai" unique_id=1607498747]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureButton4" type="TextureButton" parent="Khung_bai" unique_id=317825473]
+layout_mode = 2
+
+[node name="Player_Bot" parent="." unique_id=1821354539 instance=ExtResource("4_fuudy")]
+
+[node name="Label" type="Label" parent="." unique_id=1426535780]
+offset_left = 376.0
+offset_top = 51.0
+offset_right = 799.0
+offset_bottom = 129.0
+horizontal_alignment = 1
+
+[node name="Node2D" parent="." unique_id=818729269 instance=ExtResource("4_xylue")]
+visible = false
